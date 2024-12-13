@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美味食譜網站</title>
+    <style>
+        body {
+            font-family: "Microsoft JhengHei", sans-serif;
+            background: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #F5A623, #F8E71C);
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        header h1 {
+            margin: 0;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h2 {
+            color: #F5A623;
+            margin-top: 0;
+        }
+        p, li {
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        .description {
+            margin: 10px 0;
+        }
+        a {
+            color: #F5A623;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .recipes {
+            margin-bottom: 30px;
+        }
+        .recipe {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+        .recipe:last-child {
+            border-bottom: none;
+        }
+        .recipe img {
+            max-width: 300px;
+            border-radius: 4px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* 練習 class 搜尋的標記 */
+        .boldtext {
+            font-weight: bold;
+            color: #C00;
+        }
+
+        /* Siblings 區塊 */
+        .siblings {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        /* Parents 測試區 */
+        .parents-test {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        .outer {
+            background: #FFF7E6;
+            padding: 10px;
+        }
+        .middle {
+            background: #E6F7FF;
+            padding: 10px;
+        }
+        .inner-level {
+            background: #FCE6F2;
+            padding: 5px;
+            display: inline-block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #F5A623;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>美味食譜網站</h1>
+</header>
+
+<main>
+    <p>歡迎來到美味食譜網站！這裡有各式各樣的食譜讓你練習使用 Beautiful Soup 的技巧：</p>
+    <ul>
+        <li>find()</li>
+        <li>find_all()</li>
+        <li>find_all(..., limit=2)</li>
+        <li>屬性搜尋 (如：find(id='recipe2'))</li>
+        <li>class 搜尋 (如：find_all("p", class_="boldtext"))</li>
+        <li>find_parents()</li>
+        <li>find_previous_sibling() / find_previous_siblings()</li>
+        <li>find_next_sibling() / find_next_siblings()</li>
+    </ul>
+
+    <div class="recipes">
+        <article class="recipe" id="recipe1">
+            <h2>經典蘋果派</h2>
+            <img src="https://via.placeholder.com/300x200?text=Apple+Pie" alt="蘋果派">
+            <p class="description">酥脆的外皮搭配香甜多汁的蘋果餡，經典不敗的甜點！</p>
+        </article>
+
+        <article class="recipe" id="recipe2">
+            <h2>巧克力蛋糕</h2>
+            <img src="https://via.placeholder.com/300x200?text=Chocolate+Cake" alt="巧克力蛋糕">
+            <p class="description boldtext">濃厚巧克力香氣的蛋糕，是巧克力愛好者絕不錯過的甜點。</p>
+            <p class="description">佐上一杯熱茶更是無與倫比。</p>
+            <a href="https://example.com/special" id="specialLink">特別推薦連結</a>
+        </article>
+
+        <article class="recipe" id="recipe3">
+            <h2>水果沙拉</h2>
+            <img src="https://via.placeholder.com/300x200?text=Fruit+Salad" alt="水果沙拉">
+            <p class="description">多樣新鮮水果拌上清爽的酸甜醬汁，夏日必備！</p>
+        </article>
+    </div>
+
+    <div class="siblings">
+        <h3>相關文章</h3>
+        <p class="sibling">廚房必備工具</p>
+        <p class="sibling" id="target">廚房收納技巧</p>
+        <p class="sibling">食材保存秘訣</p>
+        <p class="sibling">餐桌禮儀介紹</p>
+    </div>
+
+    <div class="parents-test">
+        <h3>巢狀結構 (find_parents 測試)</h3>
+        <div class="outer">
+            <div class="middle">
+                <span class="inner-level">用來測試 find_parents 的元素</span>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <p>© 2024 美味食譜網站</p>
+</footer>
+
+</body>
+</html>

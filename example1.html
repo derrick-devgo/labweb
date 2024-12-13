@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Soup 練習範例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        h1, h2, h3 {
+            color: #4A90E2;
+        }
+        p, li {
+            line-height: 1.6;
+        }
+        .boldtext {
+            font-weight: bold;
+            color: #D0021B;
+        }
+        #container {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style: disc inside;
+        }
+        ul li {
+            margin-bottom: 5px;
+        }
+        .section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .siblings {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .parents-test {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .level1 {
+            background: #F0F8FF;
+            padding: 10px;
+        }
+        .level2 {
+            background: #FAFAD2;
+            padding: 10px;
+        }
+        .level3 {
+            background: #E6E6FA;
+            padding: 5px;
+        }
+        footer p {
+            margin: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Beautiful Soup 練習範例</h1>
+</header>
+
+<main>
+    <div id="container">
+        <p>這是第一個段落，其中包含一個 <b class="boldtext">粗體紅字</b>，可用來測試 class 搜尋。</p>
+        <ul>
+            <li><a href="https://example.com/link1" id="link1">連結一</a></li>
+            <li><a href="https://example.com/link2" id="link2">連結二</a></li>
+            <li><a href="https://example.com/link3" id="link3">連結三</a></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>測試 find_all() 與 limit 參數</h2>
+        <p>第一段落 (section內)</p>
+        <p>第二段落 (section內)</p>
+        <p>第三段落 (section內)</p>
+    </div>
+
+    <div class="siblings">
+        <h3>測試兄弟元素</h3>
+        <p class="sibling">兄弟段落一</p>
+        <p class="sibling" id="target">兄弟段落二(目標)</p>
+        <p class="sibling">兄弟段落三</p>
+        <p class="sibling">兄弟段落四</p>
+    </div>
+
+    <div class="parents-test">
+        <h3>測試 find_parents()</h3>
+        <div class="level1">
+            <div class="level2">
+                <span class="level3">這是位於多層div中的span，用來測試 find_parents</span>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2024 練習範例頁面</p>
+</footer>
+
+</body>
+</html>
