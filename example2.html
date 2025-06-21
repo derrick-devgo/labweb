@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,40 +13,49 @@
             padding: 0;
             color: #333;
         }
+
         header {
             background: linear-gradient(135deg, #F5A623, #F8E71C);
             padding: 20px;
             text-align: center;
             color: #fff;
         }
+
         header h1 {
             margin: 0;
             font-weight: normal;
             letter-spacing: 2px;
         }
+
         main {
             max-width: 900px;
             margin: 40px auto;
             background: #fff;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 30px;
         }
+
         h2 {
             color: #F5A623;
             margin-top: 0;
         }
-        p, li {
+
+        p,
+        li {
             line-height: 1.6;
             font-size: 16px;
         }
+
         .description {
             margin: 10px 0;
         }
+
         a {
             color: #F5A623;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
@@ -53,13 +63,16 @@
         .recipes {
             margin-bottom: 30px;
         }
+
         .recipe {
             border-bottom: 1px solid #eee;
             padding: 20px 0;
         }
+
         .recipe:last-child {
             border-bottom: none;
         }
+
         .recipe img {
             max-width: 300px;
             border-radius: 4px;
@@ -81,24 +94,33 @@
             margin-bottom: 30px;
         }
 
-        /* Parents 測試區 */
-        .parents-test {
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 4px;
+        /* 食譜卡片區塊 */
+        /* 卡片本體 */
+        .step-card {
+            position: relative;
+            /* 讓標籤能絕對定位 */
+            border: 2px solid #333;
+            /* 黑色邊框 */
+            border-radius: 12px;
+            /* 圓角方框  :contentReference[oaicite:0]{index=0} */
+            padding: 40px 25px 25px;
+            /* 預留上方空間給標籤 */
+            margin: 20px 0;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+            /* 柔和陰影  :contentReference[oaicite:1]{index=1} */
         }
-        .outer {
-            background: #FFF7E6;
-            padding: 10px;
-        }
-        .middle {
-            background: #E6F7FF;
-            padding: 10px;
-        }
-        .inner-level {
-            background: #FCE6F2;
-            padding: 5px;
-            display: inline-block;
+
+        /* 左上角難度標籤 */
+        .difficulty-label {
+            position: absolute;
+            /* 讓標籤浮在框外  :contentReference[oaicite:2]{index=2} */
+            top: -16px;
+            left: 16px;
+            background: #fff;
+            padding: 0 8px;
+            font-weight: 700;
+            font-size: 15px;
         }
 
         footer {
@@ -109,69 +131,184 @@
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>美味食譜網站</h1>
-</header>
+    <header>
+        <h1>美味食譜網站</h1>
+    </header>
 
-<main>
-    <p>歡迎來到美味食譜網站！這裡有各式各樣的食譜讓你練習使用 Beautiful Soup 的技巧：</p>
-    <!-- <ul>
-        <li>find()</li>
-        <li>find_all()</li>
-        <li>find_all(..., limit=2)</li>
-        <li>屬性搜尋 (如：find(id='recipe2'))</li>
-        <li>class 搜尋 (如：find_all("p", class_="boldtext"))</li>
-        <li>find_parents()</li>
-        <li>find_previous_sibling() / find_previous_siblings()</li>
-        <li>find_next_sibling() / find_next_siblings()</li>
-    </ul> -->
-
-    <div class="recipes">
+    <main>
+        <p>歡迎來到美味食譜網站！這裡有各式各樣的食譜讓你練習使用 Beautiful Soup 的技巧：</p>
+        <div class="recipes">
+        <!-- 1. 經典蘋果派 -->
         <article class="recipe" id="recipe1">
             <h2>經典蘋果派</h2>
-            <img src="images/pie.png" alt="蘋果派">
             <p class="description">酥脆的外皮搭配香甜多汁的蘋果餡，經典不敗的甜點！</p>
+            <img src="images/pie.png" alt="蘋果派">
+            
+
+            <!-- 食材 -->
+            <div class="ingredients-wrapper">
+                <div class="ingredients-box">
+                    <div class="ingredients-inner">
+                        <h3>食材</h3>
+                        <ul class="ingredients">
+                            <li><span class="ingredient">蘋果 3 顆</span></li>
+                            <li><span class="ingredient">肉桂粉 1 茶匙</span></li>
+                            <li><span class="ingredient">麵粉 200 g</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 製作步驟卡片 -->
+            <div class="step-card" data-difficulty="4">
+                <span class="difficulty-label">難度：4</span>
+                <div class="steps">
+                    <p class="step">① 將蘋果切塊拌入肉桂和糖。</p>
+                    <p class="step">② 派皮鋪模後填入蘋果餡，覆蓋格狀麵皮。</p>
+                    <p class="step">③ 180 °C 烘烤 45 分鐘至金黃。</p>
+                </div>
+            </div>
         </article>
 
+        <!-- 2. 巧克力蛋糕 -->
         <article class="recipe" id="recipe2">
             <h2>巧克力蛋糕</h2>
-            <img src="images/cake.png" alt="巧克力蛋糕">
-            <p class="description boldtext">濃厚巧克力香氣的蛋糕，是巧克力愛好者絕不錯過的甜點。</p>
-            <p class="description">佐上一杯熱茶更是無與倫比。</p>
+            <!-- <p class="description boldtext">濃厚巧克力香氣的蛋糕，是巧克力愛好者絕不錯過的甜點。</p> -->
+            <p class="description">濃厚巧克力香氣的蛋糕，是巧克力愛好者絕不錯過的甜點，配上一杯熱茶更是無與倫比。</p>
             <a href="https://example.com/special" id="specialLink">特別推薦連結</a>
+            <img src="images/cake.png" alt="巧克力蛋糕">
+            
+
+            <div class="ingredients-wrapper">
+                <div class="ingredients-box">
+                    <div class="ingredients-inner">
+                        <h3>食材</h3>
+                        <ul class="ingredients">
+                            <li><span class="ingredient">可可粉 30 g</span></li>
+                            <li><span class="ingredient">低筋麵粉 120 g</span></li>
+                            <li><span class="ingredient">雞蛋 2 顆</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card" data-difficulty="3">
+                <span class="difficulty-label">難度：3</span>
+                <div class="steps">
+                    <p class="step">① 攪拌蛋黃、糖、油後加入可可粉與麵粉。</p>
+                    <p class="step">② 打發蛋白後混合麵糊。</p>
+                    <p class="step">③ 170 °C 烘烤 30 分鐘。</p>
+                </div>
+            </div>
         </article>
 
+        <!-- 3. 水果沙拉 -->
         <article class="recipe" id="recipe3">
             <h2>水果沙拉</h2>
-            <img src="images/salad.png" alt="水果沙拉">
             <p class="description">多樣新鮮水果拌上清爽的酸甜醬汁，夏日必備！</p>
+            <img src="images/salad.png" alt="水果沙拉">
+
+            <div class="ingredients-wrapper">
+                <div class="ingredients-box">
+                    <div class="ingredients-inner">
+                        <h3>食材</h3>
+                        <ul class="ingredients">
+                            <li><span class="ingredient">奇異果 2 顆</span></li>
+                            <li><span class="ingredient">草莓 6 顆</span></li>
+                            <li><span class="ingredient">優格 100 g</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card" data-difficulty="1">
+                <span class="difficulty-label">難度：1</span>
+                <div class="steps">
+                    <p class="step">① 所有水果切丁。</p>
+                    <p class="step">② 混合優格與蜂蜜成醬汁。</p>
+                    <p class="step">③ 淋醬拌勻即可食用。</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- 4. 法式薄餅 -->
+        <article class="recipe" id="recipe4">
+            <h2>法式薄餅</h2>
+            <p class="description">薄薄的法式煎餅，搭配新鮮水果與鮮奶油，口感細緻滑順。</p>
+            <img src="images/crepe.png" alt="法式薄餅">
+
+            <div class="ingredients-wrapper">
+                <div class="ingredients-box">
+                    <div class="ingredients-inner">
+                        <h3>食材</h3>
+                        <ul class="ingredients">
+                            <li><span class="ingredient">雞蛋 2 顆</span></li>
+                            <li><span class="ingredient">牛奶 200 ml</span></li>
+                            <li><span class="ingredient">中筋麵粉 120 g</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card" data-difficulty="2">
+                <span class="difficulty-label">難度：2</span>
+                <div class="steps">
+                    <p class="step">① 將蛋、麵粉、牛奶攪拌成濃稠麵糊。</p>
+                    <p class="step">② 平底鍋薄油，小火攤成薄片。</p>
+                    <p class="step">③ 盛盤後可搭配水果與鮮奶油。</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- 5. 檸檬塔 -->
+        <article class="recipe" id="recipe5">
+            <h2>檸檬塔</h2>
+            <p class="description">酸甜檸檬餡與酥脆塔皮的完美結合，非常適合午後茶的甜點選擇。</p>
+            <img src="images/lemon_tart.png" alt="檸檬塔">
+
+            <div class="ingredients-wrapper">
+                <div class="ingredients-box">
+                    <div class="ingredients-inner">
+                        <h3>食材</h3>
+                        <ul class="ingredients">
+                            <li><span class="ingredient">檸檬汁 80 ml</span></li>
+                            <li><span class="ingredient">蛋黃 3 顆</span></li>
+                            <li><span class="ingredient">奶油 60 g</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card" data-difficulty="4">
+                <span class="difficulty-label">難度：4</span>
+                <div class="steps">
+                    <p class="step">① 塔皮預烤 15 分鐘。</p>
+                    <p class="step">② 檸檬汁、蛋黃、糖小火拌至濃稠。</p>
+                    <p class="step">③ 倒入塔皮，180 °C 再烤 10 分鐘。</p>
+                </div>
+            </div>
         </article>
     </div>
 
-    <div class="siblings">
-        <h3>相關文章</h3>
-        <p class="sibling"><a href="https://www.ikea.com.tw/zh/rooms/kitchen">廚房必備工具</a></p>
-        <p class="sibling" id="target"><a href="https://www.feistore.com.tw/blog/kitchen-strategy?srsltid=AfmBOoo5BBk5AV4a5otmr9HsDe2qYmx2xjCQtbXZBvNgGfCanrJeD9Z9">廚房收納技巧</a></p>
-        <p class="sibling"><a href="#">食材保存秘訣</a></p>
-        <p class="sibling"><a href="https://zh.wikipedia.org/zh-tw/%E9%A4%90%E6%A1%8C%E7%A6%AE%E5%84%80">餐桌禮儀介紹</a></p>
-    </div>
-
-    <div class="parents-test">
-        <h3>巢狀結構 (find_parents 測試)</h3>
-        <div class="outer">
-            <div class="middle">
-                <span class="inner-level">用來測試 find_parents 的元素</span>
-            </div>
+        <div class="siblings">
+            <h3>相關文章</h3>
+            <p class="sibling"><a href="https://www.ikea.com.tw/zh/rooms/kitchen">廚房必備工具</a></p>
+            <p class="sibling" id="target"><a
+                    href="https://www.feistore.com.tw/blog/kitchen-strategy?srsltid=AfmBOoo5BBk5AV4a5otmr9HsDe2qYmx2xjCQtbXZBvNgGfCanrJeD9Z9">廚房收納技巧</a>
+            </p>
+            <p class="sibling"><a href="#">食材保存秘訣</a></p>
+            <p class="sibling"><a href="https://zh.wikipedia.org/zh-tw/%E9%A4%90%E6%A1%8C%E7%A6%AE%E5%84%80">餐桌禮儀介紹</a>
+            </p>
         </div>
-    </div>
+    </main>
 
-</main>
-
-<footer>
-    <p>© 2024 美味食譜網站</p>
-</footer>
+    <footer>
+        <p>© 2024 美味食譜網站</p>
+    </footer>
 
 </body>
+
 </html>
